@@ -1,0 +1,66 @@
+import React from 'react';
+
+const StaticTable = ({ data, docFun, paymentFun, detailFun, nomineeFun }) => {
+  return (
+    <div className="table-responsive">
+      <table className="table table-sm table-bordered shadow-lg table-striped">
+        <thead>
+          <tr className="text-center">
+            <th>Policy No</th>
+            <th>Username</th>
+            <th>Scheme Name</th>
+            <th>Status</th>
+            <th>Documents</th>
+            <th>Payments</th>
+            <th>Details</th>
+            <th>Nominee</th>
+          </tr>
+        </thead>
+        <tbody className="text-center">
+          {data.map((policy, index) => (
+            <tr key={index}>
+              <td>{policy.policyNo}</td>
+              <td>{policy.Username}</td>
+              <td>{policy.SchemeName}</td>
+              <td>{policy.Status}</td>
+              <td>
+                <button
+                  className="btn btn-outline-success btn-sm"
+                  onClick={() => docFun(policy)}
+                >
+                  Documents
+                </button>
+              </td>
+              <td>
+                <button
+                  className="btn btn-outline-success btn-sm"
+                  onClick={() => paymentFun(policy)}
+                >
+                  Payments
+                </button>
+              </td>
+              <td>
+                <button
+                  className="btn btn-outline-info btn-sm"
+                  onClick={() => detailFun(policy)}
+                >
+                  Details
+                </button>
+              </td>
+              <td>
+                <button
+                  className="btn btn-outline-primary btn-sm"
+                  onClick={() => nomineeFun(policy)}
+                >
+                  Nominee
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default StaticTable;
